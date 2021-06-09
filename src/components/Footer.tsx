@@ -6,7 +6,7 @@ import CypressLogo from "../components/SvgCypressLogo";
 export default function Footer() {
   return (
     <Container maxWidth="sm" style={{ marginTop: 50 }}>
-      <Typography variant="body2" color="textSecondary" align="center">
+      {/* <Typography variant="body2" color="textSecondary" align="center">
         Built by
         <a
           style={{ textDecoration: "none" }}
@@ -24,7 +24,7 @@ export default function Footer() {
             }}
           />
         </a>
-      </Typography>
+      </Typography> */}
     </Container>
   );
 }

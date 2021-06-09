@@ -41,7 +41,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
 
   return (
     <Paper className={classes.paper}>
-      {filterComponent}
+      {/* {filterComponent}
       <ListSubheader component="div">{header}</ListSubheader>
       {showSkeleton && <SkeletonList />}
       {transactions.length > 0 && (
@@ -79,7 +79,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
             </Grid>
           </Grid>
         </EmptyList>
-      )}
+      )} */}
     </Paper>
   );
 };

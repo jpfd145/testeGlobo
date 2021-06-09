@@ -91,6 +91,7 @@ const MainLayout: React.FC<Props> = ({ children, notificationsService, authServi
           <Grid container spacing={3}>
             <Grid item xs={12}>
               {children}
+              tetstetstette
             </Grid>
           </Grid>
         </Container>

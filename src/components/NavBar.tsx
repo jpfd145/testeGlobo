@@ -94,7 +94,7 @@ const NavBar: React.FC<NavBarProps> = ({ drawerOpen, toggleDrawer, notifications
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}>
-      <Toolbar className={classes.toolbar}>
+      {/* <Toolbar className={classes.toolbar}>
         <IconButton
           data-test="sidenav-toggle"
           edge="start"
@@ -147,7 +147,7 @@ const NavBar: React.FC<NavBarProps> = ({ drawerOpen, toggleDrawer, notifications
       </Toolbar>
       {(match.pathname === "/" || RegExp("/(?:public|contacts|personal)").test(match.pathname)) && (
         <TransactionNavTabs />
-      )}
+      )} */}
     </AppBar>
   );
 };

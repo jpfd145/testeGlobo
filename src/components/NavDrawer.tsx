@@ -73,6 +73,13 @@ export const secondaryListItems = (signOutPending: Function) => (
   </div>
 );
 
+// function Greeting() {
+//   if (isLoggedIn) {
+//     return <UserGreeting />;
+//   }
+//   return <GuestGreeting />;
+// }
+
 const useStyles = makeStyles((theme) => ({
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
