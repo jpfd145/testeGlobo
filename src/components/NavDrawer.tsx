@@ -25,9 +25,18 @@ import {
 } from "@material-ui/icons";
 
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
+//import UsersList from "./UsersList";
 
 const drawerWidth = 240;
 const condition = false;
+
+//<UsersList></UsersList>;
+// const NavDraw: React.FC<Props> = ({ authService }) => {
+//   const [authState] = useService(authService);
+//   const currentUser = authState?.context?.user;
+
+//   console.log(currentUser);
+// };
 
 export const RenderIf: React.FC<{
   condition: boolean | null | undefined;
