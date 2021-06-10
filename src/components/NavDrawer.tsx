@@ -27,6 +27,13 @@ import {
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
 
 const drawerWidth = 240;
+const condition = false;
+
+export const RenderIf: React.FC<{
+  condition: boolean | null | undefined;
+}> = ({ condition, children }) => {
+  return <>{condition && children}</>;
+};
 
 export const mainListItems = (
   toggleDrawer: ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void) | undefined,
@@ -46,19 +53,21 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItem>
-    <ListItem
-      button
-      // @ts-ignore
-      onClick={() => showTemporaryDrawer && toggleDrawer()}
-      component={RouterLink}
-      to="/user/settings"
-      data-test="sidenav-user-settings"
-    >
-      <ListItemIcon>
-        <PersonIcon />
-      </ListItemIcon>
-      <ListItemText primary="Users" />
-    </ListItem>
+    <RenderIf condition={condition}>
+      <ListItem
+        button
+        // @ts-ignore
+        onClick={() => showTemporaryDrawer && toggleDrawer()}
+        component={RouterLink}
+        to="/user/settings"
+        data-test="sidenav-user-settings"
+      >
+        <ListItemIcon>
+          <PersonIcon />
+        </ListItemIcon>
+        <ListItemText primary="Users" />
+      </ListItem>
+    </RenderIf>
   </div>
 );
 
@@ -72,13 +81,6 @@ export const secondaryListItems = (signOutPending: Function) => (
     </ListItem>
   </div>
 );
-
-// function Greeting() {
-//   if (isLoggedIn) {
-//     return <UserGreeting />;
-//   }
-//   return <GuestGreeting />;
-// }
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
