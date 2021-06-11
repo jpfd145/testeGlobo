@@ -1,8 +1,6 @@
 import React from "react";
 import { makeStyles, Paper } from "@material-ui/core";
-import UsersList from "./UsersList";
 import { User } from "../models";
-import UserListSearchForm from "./UserListSearchForm";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -27,12 +25,7 @@ const TransactionCreateStepOne: React.FC<TransactionCreateStepOneProps> = ({
 }) => {
   const classes = useStyles();
 
-  return (
-    <Paper className={classes.paper} elevation={0}>
-      <UserListSearchForm userListSearch={userListSearch} />
-      <UsersList users={users} setReceiver={setReceiver} />
-    </Paper>
-  );
+  return <Paper className={classes.paper} elevation={0}></Paper>;
 };
 
 export default TransactionCreateStepOne;

@@ -193,8 +193,7 @@
   },
   "jest": {
     "watchPathIgnorePatterns": [
-      "<rootDir>/data/database.json",
-      "<rootDir>/data/database-seed.json"
+      "<rootDir>/data/database.json"
     ]
   },
   "husky": {
