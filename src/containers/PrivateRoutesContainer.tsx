@@ -13,7 +13,7 @@ import { DataContext, DataSchema, DataEvents } from "../machines/dataMachine";
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
 import { SnackbarContext, SnackbarSchema, SnackbarEvents } from "../machines/snackbarMachine";
 import { useService } from "@xstate/react";
-import UserOnboardingContainer from "./UserOnboardingContainer";
+// import UserOnboardingContainer from "./UserOnboardingContainer";
 
 export interface Props {
   isLoggedIn: boolean;
@@ -38,10 +38,10 @@ const PrivateRoutesContainer: React.FC<Props> = ({
 
   return (
     <MainLayout notificationsService={notificationsService} authService={authService}>
-      <UserOnboardingContainer
+      {/* <UserOnboardingContainer
         authService={authService}
         bankAccountsService={bankAccountsService}
-      />
+      /> */}
       <Switch>
         <PrivateRoute isLoggedIn={isLoggedIn} exact path={"/(public|contacts|personal)?"}>
           <TransactionsContainer />

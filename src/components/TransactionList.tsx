@@ -9,6 +9,8 @@ import EmptyList from "./EmptyList";
 import TransactionInfiniteList from "./TransactionInfiniteList";
 import TransferMoneyIllustration from "./SvgUndrawTransferMoneyRywa";
 
+import TxCambioNom from "components/txCambio";
+
 export interface TransactionListProps {
   header: string;
   transactions: TransactionResponseItem[];
@@ -40,47 +42,48 @@ const TransactionList: React.FC<TransactionListProps> = ({
   const showSkeleton = isLoading && isEmpty(pagination);
 
   return (
-    <Paper className={classes.paper}>
-      {/* {filterComponent}
-      <ListSubheader component="div">{header}</ListSubheader>
-      {showSkeleton && <SkeletonList />}
-      {transactions.length > 0 && (
-        <TransactionInfiniteList
-          transactions={transactions}
-          loadNextPage={loadNextPage}
-          pagination={pagination}
-        />
-      )}
-      {showEmptyList && (
-        <EmptyList entity="Transactions">
-          <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            style={{ width: "100%" }}
-            spacing={2}
-          >
-            <Grid item>
-              <TransferMoneyIllustration style={{ height: 200, width: 300, marginBottom: 30 }} />
-            </Grid>
-            <Grid item>
-              {showCreateButton && (
-                <Button
-                  data-test="transaction-list-empty-create-transaction-button"
-                  variant="contained"
-                  color="primary"
-                  component={RouterLink}
-                  to="/transaction/new"
-                >
-                  Create A Transaction
-                </Button>
-              )}
-            </Grid>
-          </Grid>
-        </EmptyList>
-      )} */}
-    </Paper>
+    // <Paper className={classes.paper}>
+    //   {filterComponent}
+    //   <ListSubheader component="div">{header}</ListSubheader>
+    //   {showSkeleton && <SkeletonList />}
+    //   {transactions.length > 0 && (
+    //     <TransactionInfiniteList
+    //       transactions={transactions}
+    //       loadNextPage={loadNextPage}
+    //       pagination={pagination}
+    //     />
+    //   )}
+    //   {showEmptyList && (
+    //     <EmptyList entity="Transactions">
+    //       <Grid
+    //         container
+    //         direction="column"
+    //         justify="center"
+    //         alignItems="center"
+    //         style={{ width: "100%" }}
+    //         spacing={2}
+    //       >
+    //         <Grid item>
+    //           <TransferMoneyIllustration style={{ height: 200, width: 300, marginBottom: 30 }} />
+    //         </Grid>
+    //         <Grid item>
+    //           {showCreateButton && (
+    //             <Button
+    //               data-test="transaction-list-empty-create-transaction-button"
+    //               variant="contained"
+    //               color="primary"
+    //               component={RouterLink}
+    //               to="/transaction/new"
+    //             >
+    //               Create A Transaction
+    //             </Button>
+    //           )}
+    //         </Grid>
+    //       </Grid>
+    //     </EmptyList>
+    //   )}
+    // </Paper>
+    <TxCambioNom />
   );
 };
 

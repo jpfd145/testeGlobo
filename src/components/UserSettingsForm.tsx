@@ -9,6 +9,7 @@ const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2
 const DefaultPrivacyLevelValues = Object.values(DefaultPrivacyLevel);
 
 const validationSchema = object({
+  username: string().required("Enter a username"),
   firstName: string().required("Enter a first name"),
   lastName: string().required("Enter a last name"),
   email: string().email("Must contain a valid email address").required("Enter an email address"),
@@ -42,6 +43,7 @@ export interface UserSettingsProps {
 const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser }) => {
   const classes = useStyles();
   const initialValues: UserSettingsPayload = {
+    username: userProfile.username,
     firstName: userProfile.firstName,
     lastName: userProfile.lastName,
     email: userProfile.email,
@@ -57,10 +59,28 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
         setSubmitting(true);
         updateUser({ id: userProfile.id, ...values });
         setSubmitting(false);
+        alert("Usuario Alterado com Sucesso!");
       }}
     >
       {({ isValid, isSubmitting }) => (
         <Form className={classes.form} data-test="user-settings-form">
+          <Field name="username">
+            {({ field, meta: { error, value, initialValue, touched } }: FieldProps) => (
+              <TextField
+                variant="outlined"
+                margin="dense"
+                fullWidth
+                required
+                id={"user-settings-username-input"}
+                type="text"
+                placeholder=""
+                inputProps={{ "data-test": "user-settings-username-input" }}
+                error={(touched || value !== initialValue) && Boolean(error)}
+                helperText={touched || value !== initialValue ? error : ""}
+                {...field}
+              />
+            )}
+          </Field>
           <Field name="firstName">
             {({ field, meta: { error, value, initialValue, touched } }: FieldProps) => (
               <TextField
@@ -78,7 +98,7 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
               />
             )}
           </Field>
-          <Field name="lastName">
+          {/* <Field name="lastName">
             {({ field, meta: { error, value, initialValue, touched } }: FieldProps) => (
               <TextField
                 variant="outlined"
@@ -94,7 +114,7 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
                 {...field}
               />
             )}
-          </Field>
+          </Field> */}
           <Field name="email">
             {({ field, meta: { error, value, initialValue, touched } }: FieldProps) => (
               <TextField
@@ -112,7 +132,7 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
               />
             )}
           </Field>
-          <Field name="phoneNumber">
+          {/* <Field name="phoneNumber">
             {({ field, meta: { error, value, initialValue, touched } }: FieldProps) => (
               <TextField
                 variant="outlined"
@@ -128,7 +148,7 @@ const UserSettingsForm: React.FC<UserSettingsProps> = ({ userProfile, updateUser
                 {...field}
               />
             )}
-          </Field>
+          </Field> */}
           <Grid container spacing={2} direction="row" justify="flex-start" alignItems="flex-start">
             <Grid item>
               <Button

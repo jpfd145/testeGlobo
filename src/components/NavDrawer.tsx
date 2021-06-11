@@ -1,5 +1,4 @@
 import React from "react";
-import { head } from "lodash/fp";
 import { Interpreter } from "xstate";
 import { useService } from "@xstate/react";
 import clsx from "clsx";
@@ -9,13 +8,10 @@ import {
   makeStyles,
   Drawer,
   List,
-  Divider,
   ListItem,
   ListItemIcon,
   ListItemText,
   Grid,
-  Avatar,
-  Typography,
 } from "@material-ui/core";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -25,24 +21,8 @@ import {
 } from "@material-ui/icons";
 
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
-//import UsersList from "./UsersList";
 
 const drawerWidth = 240;
-const condition = false;
-
-//<UsersList></UsersList>;
-// const NavDraw: React.FC<Props> = ({ authService }) => {
-//   const [authState] = useService(authService);
-//   const currentUser = authState?.context?.user;
-
-//   console.log(currentUser);
-// };
-
-export const RenderIf: React.FC<{
-  condition: boolean | null | undefined;
-}> = ({ condition, children }) => {
-  return <>{condition && children}</>;
-};
 
 export const mainListItems = (
   toggleDrawer: ((event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void) | undefined,
@@ -62,21 +42,6 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Home" />
     </ListItem>
-    <RenderIf condition={condition}>
-      <ListItem
-        button
-        // @ts-ignore
-        onClick={() => showTemporaryDrawer && toggleDrawer()}
-        component={RouterLink}
-        to="/user/settings"
-        data-test="sidenav-user-settings"
-      >
-        <ListItemIcon>
-          <PersonIcon />
-        </ListItemIcon>
-        <ListItemText primary="Users" />
-      </ListItem>
-    </RenderIf>
   </div>
 );
 
@@ -128,9 +93,6 @@ const useStyles = makeStyles((theme) => ({
   },
   userProfileHidden: {
     display: "none",
-  },
-  avatar: {
-    marginRight: theme.spacing(2),
   },
   accountBalance: {
     marginLeft: theme.spacing(2),
@@ -188,55 +150,41 @@ const NavDrawer: React.FC<Props> = ({
         className={drawerOpen ? classes.userProfile : classes.userProfileHidden}
       >
         <Grid item>
-          {currentUser && (
-            <Avatar
-              className={classes.avatar}
-              alt={`${currentUser.firstName} ${currentUser.lastName}`}
-              src={currentUser.avatar}
-            />
-          )}
+          <ListItem
+            button
+            // @ts-ignore
+            onClick={() => showTemporaryDrawer && toggleDrawer()}
+            component={RouterLink}
+            to="/"
+            data-test="sidenav-home"
+          >
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
         </Grid>
         <Grid item>
-          {currentUser && (
+          {currentUser?.defaultPrivacyLevel === "private" && (
             <>
-              <Typography
-                variant="subtitle1"
-                color="textPrimary"
-                data-test="sidenav-user-full-name"
+              <ListItem
+                button
+                // @ts-ignore
+                onClick={() => showTemporaryDrawer && toggleDrawer()}
+                component={RouterLink}
+                to="/user/settings"
+                data-test="sidenav-user-settings"
               >
-                {currentUser.firstName} {head(currentUser.lastName)}
-              </Typography>
-              <Typography
-                variant="subtitle2"
-                color="inherit"
-                gutterBottom
-                data-test="sidenav-username"
-              >
-                @{currentUser.username}
-              </Typography>
+                <ListItemIcon>
+                  <PersonIcon />
+                </ListItemIcon>
+                <ListItemText primary="Users" />
+              </ListItem>
             </>
           )}
-        </Grid>
-        <Grid item style={{ width: "30%" }}></Grid>
-      </Grid>
-      <Grid
-        container
-        direction="row"
-        justify="space-between"
-        alignItems="center"
-        className={drawerOpen ? classes.userProfile : classes.userProfileHidden}
-      >
-        <Grid item>
-          <Divider />
-        </Grid>
-        <Grid item>
-          <List>{mainListItems(toggleDrawer, showTemporaryDrawer)}</List>
-        </Grid>
-        <Grid item>
-          <Divider />
-        </Grid>
-        <Grid item>
-          <List>{secondaryListItems(signOut)}</List>
+          <Grid item>
+            <List>{secondaryListItems(signOut)}</List>
+          </Grid>
         </Grid>
       </Grid>
     </Drawer>
