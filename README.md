@@ -7,7 +7,7 @@ yarn dev
 name: Administrador
 username: admin
 password: s3cret
------------------
+
 name: Funcionario
 username: user
 password: s3cret
