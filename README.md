@@ -1,9 +1,13 @@
 ### Installation
+
 yarn install
+
 ### Run the app
+
 yarn dev
 
-**Usuarios**
+### Usuarios
+
 name: Administrador
 username: admin
 password: s3cret
