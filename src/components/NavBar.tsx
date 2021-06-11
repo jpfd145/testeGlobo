@@ -1,30 +1,10 @@
 import React from "react";
 import clsx from "clsx";
 import { Interpreter } from "xstate";
-import { useService } from "@xstate/react";
-import {
-  makeStyles,
-  AppBar,
-  Toolbar,
-  Typography,
-  IconButton,
-  Badge,
-  Button,
-  useTheme,
-  useMediaQuery,
-  Link,
-} from "@material-ui/core";
-import {
-  Menu as MenuIcon,
-  Notifications as NotificationsIcon,
-  AttachMoney as AttachMoneyIcon,
-} from "@material-ui/icons";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { makeStyles, AppBar } from "@material-ui/core";
+import {} from "@material-ui/icons";
 
 import { DataContext, DataEvents } from "../machines/dataMachine";
-import TransactionNavTabs from "./TransactionNavTabs";
-import RWALogo from "./SvgRwaLogo";
-import RWALogoIcon from "./SvgRwaIconLogo";
 
 const drawerWidth = 240;
 
@@ -84,13 +64,7 @@ interface NavBarProps {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ drawerOpen, toggleDrawer, notificationsService }) => {
-  const match = useLocation();
   const classes = useStyles();
-  const theme = useTheme();
-  const [notificationsState] = useService(notificationsService);
-
-  const allNotifications = notificationsState?.context?.results;
-  const xsBreakpoint = useMediaQuery(theme.breakpoints.only("xs"));
 
   return (
     <AppBar position="absolute" className={clsx(classes.appBar, drawerOpen && classes.appBarShift)}>

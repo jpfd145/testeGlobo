@@ -14,8 +14,6 @@ import {
 } from "@material-ui/core";
 import { Formik, Form, Field, FieldProps } from "formik";
 import { string, object, ref } from "yup";
-
-import RWALogo from "./SvgRwaLogo";
 import { SignUpPayload } from "../models";
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
 
@@ -71,9 +69,6 @@ const SignUpForm: React.FC<Props> = ({ authService }) => {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <div>
-          <RWALogo className={classes.logo} />
-        </div>
         <Typography component="h1" variant="h5" data-test="signup-title">
           Sign Up
         </Typography>
