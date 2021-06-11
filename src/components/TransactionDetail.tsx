@@ -3,13 +3,11 @@ import { Button, Typography, Grid, Avatar, Paper, IconButton, makeStyles } from 
 import { AvatarGroup } from "@material-ui/lab";
 import { ThumbUpAltOutlined as LikeIcon, CommentRounded as CommentIcon } from "@material-ui/icons";
 import { TransactionResponseItem, TransactionRequestStatus, User } from "../models";
-import CommentForm from "./CommentForm";
 import {
   isPendingRequestTransaction,
   receiverIsCurrentUser,
   currentUserLikesTransaction,
 } from "../utils/transactionUtils";
-import CommentsList from "./CommentList";
 import TransactionTitle from "./TransactionTitle";
 import TransactionAmount from "./TransactionAmount";
 
@@ -191,12 +189,7 @@ const TransactionDetail: React.FC<TransactionProps> = ({
                 )}
             </Grid>
           </Grid>
-          <Grid item>
-            <CommentForm
-              transactionId={transaction.id}
-              transactionComment={(payload) => transactionComment(payload)}
-            />
-          </Grid>
+          <Grid item></Grid>
         </Grid>
       </Grid>
       {transaction.comments.length > 0 && (
@@ -204,7 +197,6 @@ const TransactionDetail: React.FC<TransactionProps> = ({
           <Typography component="h2" variant="h6" color="primary" gutterBottom>
             <CommentIcon /> Comments
           </Typography>
-          <CommentsList comments={transaction.comments} />
         </Paper>
       )}
     </Paper>

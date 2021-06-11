@@ -7,7 +7,6 @@ import { CssBaseline } from "@material-ui/core";
 import { snackbarMachine } from "../machines/snackbarMachine";
 import { notificationsMachine } from "../machines/notificationsMachine";
 import { authService } from "../machines/authMachine";
-import AlertBar from "../components/AlertBar";
 import SignInForm from "../components/SignInForm";
 import SignUpForm from "../components/SignUpForm";
 import { bankAccountsMachine } from "../machines/bankAccountsMachine";
@@ -70,7 +69,6 @@ const App: React.FC = () => {
           </Route>
         </Switch>
       )}
-      <AlertBar snackbarService={snackbarService} />
     </div>
   );
 };

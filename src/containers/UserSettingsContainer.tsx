@@ -4,7 +4,6 @@ import UserSettingsForm from "../components/UserSettingsForm";
 import { Interpreter } from "xstate";
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
 import { useService } from "@xstate/react";
-import PersonalSettingsIllustration from "../components/SvgUndrawPersonalSettingsKihd";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -32,9 +31,6 @@ const UserSettingsContainer: React.FC<Props> = ({ authService }) => {
         User Settings
       </Typography>
       <Grid container spacing={2} direction="row" justify="flex-start" alignItems="flex-start">
-        {/* <Grid item>
-          <PersonalSettingsIllustration style={{ height: 200, width: 300 }} />
-        </Grid> */}
         <Grid item style={{ width: "50%" }}>
           {currentUser && <UserSettingsForm userProfile={currentUser} updateUser={updateUser} />}
         </Grid>

@@ -16,7 +16,6 @@ import { Formik, Form, Field, FieldProps } from "formik";
 import { string, object, ref } from "yup";
 
 import RWALogo from "./SvgRwaLogo";
-import Footer from "./Footer";
 import { SignUpPayload } from "../models";
 import { AuthMachineContext, AuthMachineEvents } from "../machines/authMachine";
 
@@ -195,9 +194,7 @@ const SignUpForm: React.FC<Props> = ({ authService }) => {
           )}
         </Formik>
       </div>
-      <Box mt={8}>
-        <Footer />
-      </Box>
+      <Box mt={8}></Box>
     </Container>
   );
 };

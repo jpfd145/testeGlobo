@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useMachine } from "@xstate/react";
 import { Interpreter } from "xstate";
 import { makeStyles, Container, Grid, useMediaQuery, useTheme } from "@material-ui/core";
-
-import Footer from "./Footer";
 import NavBar from "./NavBar";
 import NavDrawer from "./NavDrawer";
 import { DataContext, DataEvents } from "../machines/dataMachine";
@@ -94,9 +92,6 @@ const MainLayout: React.FC<Props> = ({ children, notificationsService, authServi
             </Grid>
           </Grid>
         </Container>
-        <footer>
-          <Footer />
-        </footer>
       </main>
     </>
   );

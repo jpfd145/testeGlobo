@@ -9,10 +9,7 @@ import { OktaAuth } from "@okta/okta-auth-js";
 import { Security } from "@okta/okta-react";
 
 import App from "./containers/App";
-import AppGoogle from "./containers/AppGoogle";
 import AppAuth0 from "./containers/AppAuth0";
-import AppOkta from "./containers/AppOkta";
-import AppCognito from "./containers/AppCognito";
 import { history } from "./utils/historyUtils";
 
 const theme = createMuiTheme({
@@ -61,9 +58,7 @@ if (process.env.REACT_APP_AUTH0) {
       <ThemeProvider theme={theme}>
         {process.env.REACT_APP_OKTA ? (
           /* istanbul ignore next */
-          <Security oktaAuth={oktaAuth}>
-            <AppOkta />
-          </Security>
+          <Security oktaAuth={oktaAuth}></Security>
         ) : (
           <App />
         )}
@@ -73,24 +68,10 @@ if (process.env.REACT_APP_AUTH0) {
   );
 } else if (process.env.REACT_APP_AWS_COGNITO) {
   /* istanbul ignore next */
-  ReactDOM.render(
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <AppCognito />
-      </ThemeProvider>
-    </Router>,
-    document.getElementById("root")
-  );
+  ReactDOM.render(<Router history={history}></Router>, document.getElementById("root"));
 } else if (process.env.REACT_APP_GOOGLE) {
   /* istanbul ignore next */
-  ReactDOM.render(
-    <Router history={history}>
-      <ThemeProvider theme={theme}>
-        <AppGoogle />
-      </ThemeProvider>
-    </Router>,
-    document.getElementById("root")
-  );
+  ReactDOM.render(<Router history={history}></Router>, document.getElementById("root"));
 } else {
   ReactDOM.render(
     <Router history={history}>

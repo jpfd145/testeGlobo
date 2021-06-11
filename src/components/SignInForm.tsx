@@ -155,9 +155,6 @@ const SignInForm: React.FC<Props> = ({ authService }) => {
           )}
         </Formik>
       </div>
-      {/* <Box mt={8}>
-        <Footer />
-      </Box> */}
     </Container>
   );
 };

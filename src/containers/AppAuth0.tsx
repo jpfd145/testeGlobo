@@ -7,7 +7,6 @@ import { CssBaseline } from "@material-ui/core";
 import { snackbarMachine } from "../machines/snackbarMachine";
 import { notificationsMachine } from "../machines/notificationsMachine";
 import { authService } from "../machines/authMachine";
-import AlertBar from "../components/AlertBar";
 import { bankAccountsMachine } from "../machines/bankAccountsMachine";
 import PrivateRoutesContainer from "./PrivateRoutesContainer";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
@@ -74,8 +73,6 @@ const AppAuth0: React.FC = () => {
           bankAccountsService={bankAccountsService}
         />
       )}
-
-      <AlertBar snackbarService={snackbarService} />
     </div>
   );
 };
